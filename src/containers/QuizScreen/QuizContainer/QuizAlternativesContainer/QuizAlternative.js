@@ -12,11 +12,11 @@ export default class QuizAlternative extends Component {
     onCheckAlternative(){
         const {alternativa,OnPressAlternative} = this.props
         OnPressAlternative(alternativa.id);
-        if(alternativa.resultado){
-            console.warn("Bien")
-        }else{
-            console.warn("Mal")
-        }
+        // if(alternativa.resultado){
+        //     console.warn("Bien")
+        // }else{
+        //     console.warn("Mal")
+        // }
     }
     setBackgroundContainer(resultado){
         switch (resultado) {
@@ -33,9 +33,9 @@ export default class QuizAlternative extends Component {
         }
     }
     alternativeComponent(){
-        const {alternativa,timeout} = this.props
+        const {alternativa,nextQuestion} = this.props
         const { alternativa: texto,resultado} = alternativa
-        if(!timeout){
+        if(!nextQuestion){
             return (<View style={styles.alternative}>
                         <Text style={styles.alternativeText}>{texto}</Text>
                     </View>)
@@ -48,10 +48,10 @@ export default class QuizAlternative extends Component {
         </View>)
     }
     render(){
-        const {timeout} = this.props
+        const {nextQuestion} = this.props
 
         return (
-            <TouchableOpacity activeOpacity={0.5} onPress={this.onCheckAlternative} disabled={timeout}>
+            <TouchableOpacity activeOpacity={0.5} onPress={this.onCheckAlternative} disabled={nextQuestion}>
                 {this.alternativeComponent()}
             </TouchableOpacity>
         )
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     alternativeText:{
         fontFamily:FONTS.CIRCULARSTD.BOOK,
         letterSpacing:0.3,
-        fontSize:12
+        fontSize:14
     },
     alternative:{
         borderWidth:0.5,

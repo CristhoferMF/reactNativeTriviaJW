@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     Indicio:{
         color:COLOR.WHITE,
         fontFamily:FONTS.CIRCULARSTD.BOOK,
-        fontSize:11,
+        fontSize:12,
         letterSpacing:0.2,
-        lineHeight:10.5
+        lineHeight:11
     }
 })

@@ -14,10 +14,32 @@ class QuizContainer extends Component {
     
     constructor(props){
         super(props)
+        this.componentResultado=this.componentResultado.bind(this)
+        this.renderResultadoswitch=this.renderResultadoswitch.bind(this)
     }
     
+    renderResultadoswitch(){
+        switch (this.props.successQuestion) {
+            case true:
+                return {icon:'check',color:"#08AC14",text:"RESPUESTA CORRECTA"}
+            case false:
+                return {icon:'close',color:"#EF3838",text:"RESPUESTA INCORRECTA"}
+            default:
+                return {}
+        }
+    }
+    componentResultado(){
+        if(this.props.successQuestion!=null)
+            return (
+                <View style={styles.containerTimeOut}>
+                    <Icon name={this.renderResultadoswitch().icon} color={this.renderResultadoswitch().color} size={40} />
+                    <Text style={[styles.textTimeOut,{color:this.renderResultadoswitch().color}]}>{this.renderResultadoswitch().text}</Text>
+                </View>
+            );
+        return null;
+    }
     render(){
-        const {category,quiz,OnPressAlternative,OnTimeOut,timeout} = this.props
+        const {category,quiz,OnPressAlternative,OnTimeOut,nextQuestion,timeout,successQuestion} = this.props
         
         return (
             <View style={styles.container}>
@@ -30,7 +52,7 @@ class QuizContainer extends Component {
                     </View>
                     <View style={{flex:1}}></View>
                 </View>
-                <QuizTimer OnTimeOut={OnTimeOut} timeout={timeout}/>
+                <QuizTimer OnTimeOut={OnTimeOut} nextQuestion={nextQuestion}/>
                 <QuizCategory category={category}/>
                 <QuizQuestion pregunta={quiz.pregunta}/>
                 {timeout && 
@@ -39,7 +61,12 @@ class QuizContainer extends Component {
                             <Text style={styles.textTimeOut}>TIEMPO AGOTADO</Text>
                         </View>
                     }
-                <QuizAlternativesContainer timeout={timeout} alternativas={quiz.alternativas} OnPressAlternative={OnPressAlternative}/>
+                <QuizAlternativesContainer 
+                    nextQuestion={nextQuestion} 
+                    alternativas={quiz.alternativas} 
+                    OnPressAlternative={OnPressAlternative}
+                    componentResultado={this.componentResultado}
+                    />
             </View>
         )
     }

@@ -14,8 +14,8 @@ export default class QuizTimer extends Component {
     }
 
     componentDidUpdate(prevProps){
-        if (this.props.timeout !== prevProps.timeout) {
-            if(this.props.timeout){
+        if (this.props.nextQuestion !== prevProps.nextQuestion) {
+            if(this.props.nextQuestion){
                 this.setState({seconds:0},()=>{
                     this._timerRef.restart();
                 })
@@ -29,6 +29,7 @@ export default class QuizTimer extends Component {
     render(){
         const {OnTimeOut} = this.props
         const {seconds} = this.state
+        
         return (
             <View style={styles.timer}>
                 <CircularTimer

@@ -10,13 +10,14 @@ class QuizAlternativesContainer extends Component{
     }
 
     render(){
-        const {alternativas,OnPressAlternative,timeout} = this.props
+        const {alternativas,OnPressAlternative,nextQuestion} = this.props
        
         return (
             <View style={styles.container}>
                 {alternativas.map((alternativa,i)=>{
-                    return (<QuizAlternative alternativa={alternativa} key={i} OnPressAlternative={OnPressAlternative} timeout={timeout}/>)
+                    return (<QuizAlternative alternativa={alternativa} key={i} OnPressAlternative={OnPressAlternative} nextQuestion={nextQuestion}/>)
                 })}
+                {this.props.componentResultado()}
             </View>
         )
     }
