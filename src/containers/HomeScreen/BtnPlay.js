@@ -1,10 +1,11 @@
 import React from 'react';
 import {Text,View,TouchableOpacity ,StyleSheet} from 'react-native';
+import PropTypes from 'prop-types'
 
-const BtnPlay = () => {
+const BtnPlay = ({onPress}) => {
     return (
             <TouchableOpacity 
-            onPress={()=>{}} 
+            onPress={onPress} 
             activeOpacity={0.8}>
             <View style={styles.BtnPlay}>
                 <Text letterSpacing={2} style={styles.BtnPlayText}>EMPEZAR A JUGAR</Text>
@@ -12,7 +13,9 @@ const BtnPlay = () => {
             </TouchableOpacity  >
     )
 }
-
+BtnPlay.propTypes = {
+    onPress:PropTypes.func.isRequired
+}
 const styles = StyleSheet.create({
     BtnPlay:{
         width:'70%',

@@ -4,7 +4,7 @@ import FONTS from '../../../../config/fonts'
 import CircularTimer from 'react-native-circular-timer';
 import COLOR from '../../../../config/color';
 
-const SECONDS = 30; 
+const SECONDS = 5; 
 export default class QuizTimer extends Component {
     constructor(props){
         super(props);
@@ -14,8 +14,8 @@ export default class QuizTimer extends Component {
     }
 
     componentDidUpdate(prevProps){
-        if (this.props.nextQuestion !== prevProps.nextQuestion) {
-            if(this.props.nextQuestion){
+        if (this.props.isNextQuestion !== prevProps.isNextQuestion) {
+            if(this.props.isNextQuestion){
                 this.setState({seconds:0},()=>{
                     this._timerRef.restart();
                 })
@@ -29,7 +29,7 @@ export default class QuizTimer extends Component {
     render(){
         const {OnTimeOut} = this.props
         const {seconds} = this.state
-        
+        console.log("1");
         return (
             <View style={styles.timer}>
                 <CircularTimer

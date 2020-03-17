@@ -9,6 +9,7 @@ import QuizTimer from './QuizTimer'
 import QuizCategory from './QuizCategory'
 import QuizQuestion from './QuizQuestion'
 import QuizAlternativesContainer from './QuizAlternativesContainer'
+import GameQuizCompleted from './GameQuizCompleted'
 
 class QuizContainer extends Component {
     
@@ -19,7 +20,7 @@ class QuizContainer extends Component {
     }
     
     renderResultadoswitch(){
-        switch (this.props.successQuestion) {
+        switch (this.props.isSuccess) {
             case true:
                 return {icon:'check',color:"#08AC14",text:"RESPUESTA CORRECTA"}
             case false:
@@ -29,7 +30,7 @@ class QuizContainer extends Component {
         }
     }
     componentResultado(){
-        if(this.props.successQuestion!=null)
+        if(this.props.isSuccess!=null)
             return (
                 <View style={styles.containerTimeOut}>
                     <Icon name={this.renderResultadoswitch().icon} color={this.renderResultadoswitch().color} size={40} />
@@ -39,32 +40,34 @@ class QuizContainer extends Component {
         return null;
     }
     render(){
-        const {category,quiz,OnPressAlternative,OnTimeOut,nextQuestion,timeout,successQuestion} = this.props
-        
+        const {category,quiz,setNextQuestion,OnTimeOut,isNextQuestion,isTimeout,nQuiz,score} = this.props
+        //console.log(quiz)
         return (
             <View style={styles.container}>
                 <View style={styles.topInfo}>
                     <View style={{flex:1}}>
-                        <GameQuizCount />
+                        <GameQuizCount count={category.count} nQuiz={nQuiz}/>
                     </View>
                     <View style={{flex:1}}>
-                        <GameQuizScore />
+                        <GameQuizScore score={score}/>
                     </View>
-                    <View style={{flex:1}}></View>
+                    <View style={{flex:1}}>
+                        <GameQuizCompleted completed={quiz.completed} puntuacion={quiz.puntuacion}/>
+                    </View>
                 </View>
-                <QuizTimer OnTimeOut={OnTimeOut} nextQuestion={nextQuestion}/>
-                <QuizCategory category={category}/>
+                <QuizTimer OnTimeOut={OnTimeOut} isNextQuestion={isNextQuestion}/>
+                <QuizCategory category={category.nombre}/>
                 <QuizQuestion pregunta={quiz.pregunta}/>
-                {timeout && 
+                {isTimeout && 
                         <View style={styles.containerTimeOut}>
                             <Icon name="timer" color={COLOR.FONTGREY} size={40} />
                             <Text style={styles.textTimeOut}>TIEMPO AGOTADO</Text>
                         </View>
                     }
                 <QuizAlternativesContainer 
-                    nextQuestion={nextQuestion} 
-                    alternativas={quiz.alternativas} 
-                    OnPressAlternative={OnPressAlternative}
+                    isNextQuestion={isNextQuestion} 
+                    alternativas={quiz.alternativas}
+                    setNextQuestion={setNextQuestion}
                     componentResultado={this.componentResultado}
                     />
             </View>

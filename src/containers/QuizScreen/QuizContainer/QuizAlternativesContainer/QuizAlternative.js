@@ -7,16 +7,13 @@ import COLOR from '../../../../config/color'
 export default class QuizAlternative extends Component {
     constructor(props){
         super(props)
-        this.onCheckAlternative=this.onCheckAlternative.bind(this)
+        this._handleOnPress=this._handleOnPress.bind(this)
+        this.state={
+        }
     }
-    onCheckAlternative(){
-        const {alternativa,OnPressAlternative} = this.props
-        OnPressAlternative(alternativa.id);
-        // if(alternativa.resultado){
-        //     console.warn("Bien")
-        // }else{
-        //     console.warn("Mal")
-        // }
+    _handleOnPress(){
+        const {onPress,index} = this.props
+        onPress(index)
     }
     setBackgroundContainer(resultado){
         switch (resultado) {
@@ -33,25 +30,30 @@ export default class QuizAlternative extends Component {
         }
     }
     alternativeComponent(){
-        const {alternativa,nextQuestion} = this.props
+        const {alternativa,isNextQuestion} = this.props
         const { alternativa: texto,resultado} = alternativa
-        if(!nextQuestion){
-            return (<View style={styles.alternative}>
-                        <Text style={styles.alternativeText}>{texto}</Text>
+        
+            if(!isNextQuestion){
+                return (<View style={styles.alternative}>
+                            <Text style={styles.alternativeText}>{texto}</Text>
+                        </View>)
+            }
+            if(alternativa.isPress){
+                return (
+                    <View style={[styles.alternative,this.setBackgroundContainer(resultado)]}>
+                        <Text style={[styles.alternativeText,{color:COLOR.WHITE}]}>
+                            {texto}
+                        </Text>
                     </View>)
-        }
-        return (
-        <View style={[styles.alternative,this.setBackgroundContainer(resultado)]}>
-            <Text style={[styles.alternativeText,{color:COLOR.WHITE}]}>
-                {texto}
-            </Text>
-        </View>)
+            }
+            return null;
+
     }
     render(){
-        const {nextQuestion} = this.props
+        const {isNextQuestion} = this.props
 
         return (
-            <TouchableOpacity activeOpacity={0.5} onPress={this.onCheckAlternative} disabled={nextQuestion}>
+            <TouchableOpacity activeOpacity={0.5} onPress={this._handleOnPress} disabled={isNextQuestion}>
                 {this.alternativeComponent()}
             </TouchableOpacity>
         )
@@ -59,7 +61,6 @@ export default class QuizAlternative extends Component {
 }
 QuizAlternative.propTypes = {
     alternativa:PropTypes.shape({
-        id:PropTypes.number.isRequired,
         alternativa:PropTypes.string.isRequired,
         resultado:PropTypes.bool.isRequired
     })

@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import fonts from '../../../config/fonts'
 
 const QuizQuestion = ({pregunta}) => {
+    //console.log("PREGUNTA",pregunta)
     return (
         <View style={styles.container}>
             <Text style={styles.question}>{pregunta}</Text>

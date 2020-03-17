@@ -1,13 +1,26 @@
-{
-    "id":1,
-    "preguntas": [
-        {"id":0,"pregunta":"¿A qué lugar regresarón Rut y Noemí desde Moab?",
-        "alternativas":[
-            {"id":0,"alternativa":"Belen Efrata","resultado":true},
-            {"id":1,"alternativa":"Betel","resultado":false},
-            {"id":2,"alternativa":"Belen de Zabulón","resultado":false},
-            {"id":3,"alternativa":"Nazaret","resultado":false}
-        ],
-        "indicio":"Toda la Familia de Noemí eran de este lugar. Elimelec, su esposo; Mahlón y Kilión, sus hijos)"}
-    ]
-}
+[{
+    "id": 0,
+    "pregunta": "¿A qué lugar regresarón Rut y Noemí desde Moab?",
+    "alternativas": [{
+            "id": 0,
+            "alternativa": "Belen Efrata",
+            "resultado": true
+        },
+        {
+            "id": 1,
+            "alternativa": "Betel",
+            "resultado": false
+        },
+        {
+            "id": 2,
+            "alternativa": "Belen de Zabulón",
+            "resultado": false
+        },
+        {
+            "id": 3,
+            "alternativa": "Nazaret",
+            "resultado": false
+        }
+    ],
+    "indicio": "Toda la Familia de Noemí eran de este lugar. Elimelec, su esposo; Mahlón y Kilión, sus hijos)"
+}]

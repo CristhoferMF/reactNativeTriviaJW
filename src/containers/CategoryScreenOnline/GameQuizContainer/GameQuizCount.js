@@ -1,17 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLOR from '../../../config/color'
 
-const GameQuizCount = ({nCompleted,nTotal}) => {
+const GameQuizCount = ({cantidad}) => {
     return (
         <View style={styles.container}>
             <Icon name="help" size={16} color={COLOR.FONTGREY} />
-            <Text style={styles.count}>{nCompleted} / {nTotal}</Text>
+            <Text style={styles.count}>{cantidad} Preguntas</Text>
         </View>
     )
 }
-
+GameQuizCount.propTypes = {
+    cantidad:PropTypes.number.isRequired
+}
 export default GameQuizCount
 
 const styles = StyleSheet.create({

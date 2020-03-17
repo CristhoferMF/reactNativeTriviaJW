@@ -1,10 +1,21 @@
 {
-    "categorias":[
-        {"id":0,"nombre":"Personajes Biblicos","created_at":"2019-03-09 12:29:00","updated_at":"2019-03-09 12:29:00"},
-        {"id":1,"nombre":"Lugares Biblicos","created_at":"2019-03-09 12:29:00","updated_at":"2019-03-09 12:29:00"}
+    "categorias": [{
+                "id": 0,
+                "nombre": "Personajes Biblicos",
+                "autor":"Cristhofer Montalvo",
+                "created_at": "2019-03-09 12:29:00",
+                "updated_at": "2019-03-09 12:29:00"
+        },
+        {
+                "id": 1,
+                "nombre": "Lugares Biblicos",
+                "autor":"Cristhofer Montalvo",
+                "created_at": "2019-03-09 12:29:00",
+                "updated_at": "2019-03-09 12:29:00"
+        }
     ],
-    "preguntas":[
-        {"id":0},
-        {"id":1}
-    ]
+    "contenido":{
+        "0":"array",
+        "1":"array"
+    }
 }

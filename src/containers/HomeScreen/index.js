@@ -4,7 +4,7 @@ import BtnPlay from './BtnPlay'
 import BtnHelp from './BtnHelp'
 import GameTitle from './GameTitle'
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation }) => {
     return (
         <ImageBackground
             source={require('../../assets/img/background.jpg')} 
@@ -12,7 +12,7 @@ const HomeScreen = () => {
             <View style={styles.ViewTop}>
                 <GameTitle/>
             </View>
-            <BtnPlay/>
+            <BtnPlay onPress={()=>{navigation.navigate('Category')}}/>
             <BtnHelp/>
         </ImageBackground >
     )

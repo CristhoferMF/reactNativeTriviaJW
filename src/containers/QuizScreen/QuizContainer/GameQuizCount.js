@@ -4,11 +4,11 @@ import FONTS from '../../../config/fonts'
 import COLOR from '../../../config/color'
 import ICON from 'react-native-vector-icons/MaterialIcons'
 
-const GameQuizCount = () => {
+const GameQuizCount = ({nQuiz,count}) => {
     return (
         <View style={styles.container}>
             <ICON name="help" size={15} color={COLOR.FONTGREY} style={styles.icon}/>
-            <Text style={styles.count}>4 / 10</Text>
+            <Text style={styles.count}>{nQuiz+1} / {count}</Text>
         </View>
     )
 }

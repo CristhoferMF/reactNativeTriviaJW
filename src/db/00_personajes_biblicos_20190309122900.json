@@ -1,26 +1,53 @@
-{
-    "id":0,
-    "preguntas": [
-        {
-            "id":0,
-            "pregunta":"¿Cuál fue uno de los otros nombres que recibió Gedeón?",
-            "alternativas":[
-                {"id":0,"alternativa":"JeruBaal","resultado":true},
-                {"id":1,"alternativa":"Al-Gedeón","resultado":false},
-                {"id":2,"alternativa":"Abí-ézer","resultado":false},
-                {"id":3,"alternativa":"Jerubésot","resultado":false}
-            ],
-            "indicio":"Una noche Jehová puso a prueba a Gedeón al mandarle que derruyera el altar del dios de su padre."},
-        {
-            "id":1,
-            "pregunta":"¿Cuál es el nombre de Dios?",
-            "alternativas":[
-                {"id":0,"alternativa":"Jehová","resultado":true},
-                {"id":2,"alternativa":"Jesús","resultado":false},
-                {"id":3,"alternativa":"Yaji","resultado":false},
-                {"id":4,"alternativa":"YHJW","resultado":false}
-            ],
-            "indicio":"Aparece en la Biblia más de 7.000 veces"
-        }
-    ]
-}
+[{
+        "id": 0,
+        "pregunta": "¿Cuál fue uno de los otros nombres que recibió Gedeón?",
+        "alternativas": [{
+                "id": 0,
+                "alternativa": "JeruBaal",
+                "resultado": true
+            },
+            {
+                "id": 1,
+                "alternativa": "Al-Gedeón",
+                "resultado": false
+            },
+            {
+                "id": 2,
+                "alternativa": "Abí-ézer",
+                "resultado": false
+            },
+            {
+                "id": 3,
+                "alternativa": "Jerubésot",
+                "resultado": false
+            }
+        ],
+        "indicio": "Una noche Jehová puso a prueba a Gedeón al mandarle que derruyera el altar del dios de su padre."
+    },
+    {
+        "id": 1,
+        "pregunta": "¿Cuál es el nombre de Dios?",
+        "alternativas": [{
+                "id": 0,
+                "alternativa": "Jehová",
+                "resultado": true
+            },
+            {
+                "id": 2,
+                "alternativa": "Jesús",
+                "resultado": false
+            },
+            {
+                "id": 3,
+                "alternativa": "Yaji",
+                "resultado": false
+            },
+            {
+                "id": 4,
+                "alternativa": "YHJW",
+                "resultado": false
+            }
+        ],
+        "indicio": "Aparece en la Biblia más de 7.000 veces"
+    }
+]
