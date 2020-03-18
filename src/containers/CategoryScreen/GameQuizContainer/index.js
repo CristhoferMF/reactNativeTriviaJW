@@ -14,7 +14,7 @@ const GameQuizContainer = ({navigationScreenQuiz,category,refreshCategories}) =>
             const {preguntas} = category
             let completed=0;
             preguntas.map((pregunta)=>{
-                if(preguntas.completed) completed++;
+                if(pregunta.completed) completed++;
             })
             return completed
         },

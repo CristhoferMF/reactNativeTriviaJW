@@ -4,7 +4,7 @@ import QuizContainer from './QuizContainer'
 import HintContainer from './HintContainer'
 import { Player } from '@react-native-community/audio-toolkit';
 import getRealm from '../../schemas/realm'
-import {copyJson} from '../../helpers'
+import {shuffle} from '../../helpers'
 import {Button} from '../../components/'
 
 class QuizScreen extends Component{
@@ -34,13 +34,20 @@ class QuizScreen extends Component{
         const { id } = this.props.route.params;
         const realm = await getRealm()
         let categoryRealm = realm.objectForPrimaryKey('Category',id);
-        let quizzes = categoryRealm.preguntas;
-        let score = quizzes.filtered('completed = true').sum('puntuacion')
+        let quizzes = [];
+        categoryRealm.preguntas.map((pregunta)=>{
+            quizzes.push(pregunta)
+        })
+        let score = categoryRealm.preguntas.filtered('completed = true').sum('puntuacion')
         let category = {
             nombre:categoryRealm.nombre,
             count:quizzes.length
         }
-        
+        shuffle(quizzes)
+        quizzes.sort(function(x, y) {
+            //return (x.completed === y.completed)? 0 : x.completed? -1 : 1;
+            /* false first */ return (x.completed === y.completed)? 0 : x.completed? 1 : -1;
+        })
         this.setState({category,quizzes,score})
     }
     async startSoundEffect(source,volume=1){

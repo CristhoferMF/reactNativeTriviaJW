@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import QuizAlternative from './QuizAlternative'
-import { copyJson } from '../../../../helpers'
+import { copyJson,shuffle } from '../../../../helpers'
 
 class QuizAlternativesContainer extends Component{
 
@@ -23,7 +23,8 @@ class QuizAlternativesContainer extends Component{
             alternativa.isPress=false
             arrAlternativas.push(alternativa)
         })
-        this.setState({alternativas:arrAlternativas})
+
+        this.setState({alternativas:shuffle(arrAlternativas)})
     }
     componentDidUpdate(prevProps){
         const {isNextQuestion} = this.props
