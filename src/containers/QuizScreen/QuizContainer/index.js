@@ -10,6 +10,7 @@ import QuizCategory from './QuizCategory'
 import QuizQuestion from './QuizQuestion'
 import QuizAlternativesContainer from './QuizAlternativesContainer'
 import GameQuizCompleted from './GameQuizCompleted'
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen'
 
 class QuizContainer extends Component {
     
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
         borderRadius:10,
         elevation:2,
         marginTop:20,
-        paddingHorizontal:15
+        paddingHorizontal:wp('5%')
     },
     topInfo:{
         flexDirection:'row',

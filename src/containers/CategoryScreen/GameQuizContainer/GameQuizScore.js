@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { StyleSheet, Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import COLOR from '../../../config/color'
+import FONTS from '../../../config/fonts'
 import LinearGradient from 'react-native-linear-gradient';
-
 
 const GameQuizScore = ({score,style,textStyle,iconSize,isAnimated}) => {
     
@@ -26,7 +26,7 @@ GameQuizScore.propTypes = {
 }
 GameQuizScore.defaultProps = {
     textStyle:{
-        fontSize:12,
+        fontSize:FONTS.SIZE.XS,
         marginLeft:7
     },
     style:{
@@ -34,7 +34,7 @@ GameQuizScore.defaultProps = {
         right:15,
         top:15,
     },
-    iconSize:15
+    iconSize:FONTS.SIZE.S
 }
 
 export default GameQuizScore

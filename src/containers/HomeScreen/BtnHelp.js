@@ -1,10 +1,10 @@
 import React from 'react';
-import {Text,View,TouchableOpacity ,StyleSheet} from 'react-native';
+import {Text,View,TouchableOpacity ,StyleSheet, ToastAndroid} from 'react-native';
 
 const BtnHelp = () => {
     return (
             <TouchableOpacity 
-            onPress={()=>{}} 
+            onPress={()=>{ ToastAndroid.show('Jugando',ToastAndroid.SHORT)}} 
             activeOpacity={0.8}>
             <View style={styles.BtnHelp}>
                 <Text letterSpacing={2} style={styles.BtnHelpText}>¿Cómo jugar?</Text>

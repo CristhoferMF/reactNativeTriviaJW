@@ -6,6 +6,7 @@ import getRealm from '../../schemas/realm'
 import {shuffle} from '../../helpers'
 import {Button} from '../../components/'
 import Sound from 'react-native-sound';
+import { ScrollView } from 'react-native-gesture-handler'
 
 class QuizScreen extends Component{
 
@@ -137,8 +138,8 @@ class QuizScreen extends Component{
                 source={require('../../assets/img/background.jpg')} 
                 style={styles.backgroundImage}>
                 { quiz ?
-                <View>
-                    <View style={styles.container}>
+                <View style={{flex:1}}>
+                    <ScrollView style={styles.container}>
                     <QuizContainer 
                         category={category}
                         score={score}
@@ -149,9 +150,9 @@ class QuizScreen extends Component{
                         isTimeout={isTimeout}
                         isSuccess={isSuccess}
                         setNextQuestion={this.setNextQuestion} />
-                    {!completed && isNextQuestion && <Button title="SIGUIENTE" style={{marginTop:20}} fontSize={14} isSound={false} onPress={this.onPressNextQuestion}/> }
-                    </View>
-                    <HintContainer indicio={quiz.indicio}/>
+                    {!completed && isNextQuestion && <Button title="SIGUIENTE" style={{marginTop:20}}  isSound={false} onPress={this.onPressNextQuestion}/> }
+                    </ScrollView>
+                    <ScrollView contentContainerStyle={{flex:1,justifyContent:'flex-end'}}><HintContainer indicio={quiz.indicio}/></ScrollView>
                 </View> :
                 <View style={styles.container}>
                     <Text>Se acaba</Text>    
@@ -172,6 +173,6 @@ const styles = StyleSheet.create({
     },
     container:{
         paddingHorizontal:15,
-        height:'100%'
+        maxHeight:'80%',
     },
 })

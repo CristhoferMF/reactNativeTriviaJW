@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, Text, View } from 'react-native'
-import fonts from '../../../config/fonts'
+import FONTS from '../../../config/fonts'
+import { heightPercentageToDP as hp} from 'react-native-responsive-screen'
 
 const QuizQuestion = ({pregunta}) => {
     //console.log("PREGUNTA",pregunta)
@@ -18,14 +19,14 @@ export default QuizQuestion
 
 const styles = StyleSheet.create({
     question:{
-        fontFamily:fonts.CIRCULARSTD.BLACK,
+        fontFamily:FONTS.CIRCULARSTD.BLACK,
         textAlign:'center',
-        fontSize:18,
+        fontSize:FONTS.SIZE.XL,
         letterSpacing:-0.3
 
     },
     container:{
-        marginBottom:20
+        marginBottom:hp('3%')
     }
 })
  

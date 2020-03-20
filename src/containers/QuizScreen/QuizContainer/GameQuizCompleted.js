@@ -3,11 +3,12 @@ import { StyleSheet, Text, View } from 'react-native'
 import FONTS from '../../../config/fonts'
 import COLOR from '../../../config/color'
 import ICON from 'react-native-vector-icons/MaterialIcons'
+import { heightPercentageToDP as hp} from 'react-native-responsive-screen'
 
 const GameQuizCompleted = ({completed,puntuacion}) => {
     return (
         <View style={styles.container}>
-            <ICON name={completed?'check':'bookmark'} size={15} color={completed?'#08AC14':COLOR.FONTGREY} style={styles.icon}/>
+            <ICON name={completed?'check':'bookmark'} size={FONTS.SIZE.S} color={completed?'#08AC14':COLOR.FONTGREY} style={styles.icon}/>
             <Text style={[styles.completed,{
                 color:completed?'#08AC14':COLOR.FONTBLACK
             }]}>{completed?'Completado':(puntuacion+" ptos.")}</Text>
@@ -28,5 +29,6 @@ const styles = StyleSheet.create({
     },
     completed:{
         fontFamily:FONTS.CIRCULARSTD.BOOK,
+        fontSize:FONTS.SIZE.XS
     }
 })

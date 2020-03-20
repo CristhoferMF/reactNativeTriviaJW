@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
         textShadowOffset: {width: 2, height: 1},
         textShadowRadius: 10,
-        fontSize:hp('2.7%')
+        fontSize:FONTS.SIZE.L
     },
     image:{
         marginBottom:'3%',

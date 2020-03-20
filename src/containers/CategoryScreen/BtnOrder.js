@@ -1,6 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import COLOR from '../../config/color'
+import FONTS from '../../config/fonts'
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
 const BtnOrder = () => {
     return (
@@ -24,7 +26,8 @@ const styles = StyleSheet.create({
     },
     BtnOrderText:{
         color:COLOR.FONTLIGHT,
-        fontFamily:'CircularStd-Book'
+        fontFamily:'CircularStd-Book',
+        fontSize:FONTS.SIZE.XS
     }
 })
 export default BtnOrder

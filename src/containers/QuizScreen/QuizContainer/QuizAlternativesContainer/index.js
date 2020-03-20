@@ -37,16 +37,19 @@ class QuizAlternativesContainer extends Component{
         const {alternativas} = this.state
         const {setNextQuestion} = this.props
         let arrAlternativas = copyJson(alternativas)
+
         const alternativa = arrAlternativas[i];
-        let isSuccess=true;
 
         alternativa.isPress=true
         if(alternativa.resultado){
             /* Alternativa Correcta */
-            setNextQuestion(isSuccess);
+            setNextQuestion(true);
         }else{
             /* Alternativa Incorrecta */
-            setNextQuestion(!isSuccess);
+            arrAlternativas.map((alternativa) => {
+                if (alternativa.resultado) alternativa.isPress=true;
+            })
+            setNextQuestion(false);
         }
         /* asignar alternativa presionada */
         this.setState({alternativas:arrAlternativas})

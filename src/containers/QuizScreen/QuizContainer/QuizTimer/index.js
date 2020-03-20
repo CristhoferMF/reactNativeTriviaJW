@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import FONTS from '../../../../config/fonts'
 import CircularTimer from 'react-native-circular-timer';
 import COLOR from '../../../../config/color';
+import { heightPercentageToDP as hp} from 'react-native-responsive-screen'
 
 const SECONDS = 30; 
 export default class QuizTimer extends Component {
@@ -38,7 +39,7 @@ export default class QuizTimer extends Component {
                         OnTimeOut();
                     }}
                     seconds={seconds}
-                    radius={30}
+                    radius={hp('4.3%')}
                     borderWidth={3}
                     borderColor={COLOR.FONTGREY}
                     borderBackgroundColor={'#4189F4'}
@@ -58,6 +59,6 @@ const styles = StyleSheet.create({
     },
     timerText:{
         fontFamily:FONTS.CIRCULARSTD.BOLD,
-        fontSize:20
+        fontSize:FONTS.SIZE.M
     }
 })

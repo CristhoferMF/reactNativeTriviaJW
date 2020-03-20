@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, Text, View } from 'react-native'
-import fonts from '../../../config/fonts'
+import FONTS from '../../../config/fonts'
 import color from '../../../config/color'
+import { heightPercentageToDP as hp} from 'react-native-responsive-screen'
 
 const QuizCategory = ({category}) => {
     return (
@@ -18,9 +19,9 @@ export default QuizCategory
 
 const styles = StyleSheet.create({
     categoryText:{
-        fontFamily:fonts.CIRCULARSTD.BOOK,
+        fontFamily:FONTS.CIRCULARSTD.BOOK,
         color:color.FONTGREY,
-        fontSize:11
+        fontSize:FONTS.SIZE.XS
     },
     container:{
         alignSelf:'center'

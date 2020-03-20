@@ -5,7 +5,7 @@ import GameQuizContainer from './GameQuizContainer/'
 import {Button} from '../../components/'
 import Icon  from 'react-native-vector-icons/Ionicons'
 import color from '../../config/color'
-import fonts from '../../config/fonts'
+import FONTS from '../../config/fonts'
 import Loader from 'react-native-modal-loader';
 import getRealm from '../../schemas/realm'
 import {getApiCategories} from '../../config/api'
@@ -125,10 +125,10 @@ const styles = StyleSheet.create({
     },
     categoryTitle:{
         textAlign:'center',
-        fontFamily:fonts.SCANDINAVIAN,
+        fontFamily:FONTS.SCANDINAVIAN,
         color:'white',
-        fontSize:40,
-        lineHeight:30,
+        fontSize:FONTS.SIZE.TITLE[2],
+        lineHeight:FONTS.SIZE.TITLE[1],
         paddingTop:10,
         letterSpacing:3,
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -142,12 +142,12 @@ const styles = StyleSheet.create({
         paddingHorizontal:15,
         color:color.WHITE,
         textAlign:'center',
-        fontFamily:fonts.CIRCULARSTD.BOOK,
+        fontFamily:FONTS.CIRCULARSTD.BOOK,
         fontSize:20
     },
     errorHeaderText:{
         fontSize:18,
-        fontFamily:fonts.CIRCULARSTD.BLACK
+        fontFamily:FONTS.CIRCULARSTD.BLACK
     }
 })
 

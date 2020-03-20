@@ -2,6 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import COLOR from '../../../config/color'
 import Icon from 'react-native-vector-icons/Ionicons';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import FONTS from '../../../config/fonts';
 
 
 const GameQuizDate = ({date}) => {
@@ -19,7 +21,7 @@ const GameQuizDate = ({date}) => {
     return (
         <View>
             <View style={styles.container}>
-                <Icon name="md-time" size={16} color={COLOR.FONTGREY} />
+                <Icon name="md-time" size={hp('2.3%')} color={COLOR.FONTGREY} />
                 <Text style={styles.date}>{dateRender()}</Text>
             </View>
         </View>
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
     },
     date:{
         fontFamily:'CircularStd-Book',
-        fontSize:12,
+        fontSize:FONTS.SIZE.XS,
         marginLeft:7,
         color:COLOR.FONTGREY,
         letterSpacing:0.3

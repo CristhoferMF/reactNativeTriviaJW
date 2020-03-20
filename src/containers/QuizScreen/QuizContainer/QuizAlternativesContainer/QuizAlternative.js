@@ -4,6 +4,7 @@ import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import FONTS from '../../../../config/fonts'
 import COLOR from '../../../../config/color'
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp,widthPercentageToDP as wp } from 'react-native-responsive-screen'
 
 export default class QuizAlternative extends Component {
     constructor(props){
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     alternativeText:{
         fontFamily:FONTS.CIRCULARSTD.BOOK,
         letterSpacing:0.3,
-        fontSize:14
+        fontSize:FONTS.SIZE.XS
     },
     alternative:{
         borderWidth:0.5,
@@ -81,5 +82,8 @@ const styles = StyleSheet.create({
         paddingHorizontal:15,
         marginBottom:10,
         borderRadius:20,
+        width:'100%',
+        maxWidth:400,
+        alignSelf:'center'
     }
 })

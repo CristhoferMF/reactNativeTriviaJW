@@ -4,6 +4,7 @@ import BtnPlay from './BtnPlay'
 import BtnHelp from './BtnHelp'
 import GameTitle from './GameTitle'
 import sound from '../../config/sound'
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const HomeScreen = ({navigation }) => {
     return (
@@ -28,7 +29,7 @@ const styles= StyleSheet.create({
         height:'100%'
     },
     ViewTop:{
-        height:'72%',
+        height:hp('75%'),
         alignItems:'center',
         justifyContent:'center'
     },

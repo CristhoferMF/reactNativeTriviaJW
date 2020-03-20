@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import {Text,View,TouchableOpacity ,StyleSheet} from 'react-native';
 import sound from '../../config/sound'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const Button = ({title,onPress,style,fontSize,isSound}) => {
     return (
@@ -32,7 +33,8 @@ Button.defaultProps = {
 }
 const styles = StyleSheet.create({
     Btn:{
-        width:'70%',
+        width:wp('70%'),
+        maxWidth:250,
         alignSelf:'center',
         backgroundColor:'white',
         paddingVertical:15,

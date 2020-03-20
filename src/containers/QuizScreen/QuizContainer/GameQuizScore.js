@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import COLOR from '../../../config/color'
+import FONTS from '../../../config/fonts'
 import LinearGradient from 'react-native-linear-gradient';
 import * as Animatable from 'react-native-animatable';
 
@@ -21,7 +22,7 @@ class GameQuizScore extends Component {
                 <LinearGradient colors={[COLOR.GRADIENTLEFT, COLOR.GRADIENTRIGHT]} 
                 start={{x: 0, y: 0}} end={{x: 1, y: 0}}
                 style={styles.ScoreContainer}>
-                    <Icon name="redeem" color={COLOR.WHITE} size={16}/>
+                    <Icon name="redeem" color={COLOR.WHITE} size={FONTS.SIZE.S}/>
                     <Text style={styles.ScoreText}>{score}</Text>
                 </LinearGradient>
             </Animatable.View>
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     },
     ScoreText:{
         fontFamily:'CircularStd-Bold',
-        fontSize:14,
+        fontSize:FONTS.SIZE.XS,
         marginLeft:7,
         color:COLOR.WHITE
     }

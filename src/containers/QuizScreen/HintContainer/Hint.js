@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { StyleSheet, Text, View } from 'react-native'
 import FONTS from '../../../config/fonts'
 import COLOR from '../../../config/color'
+import { heightPercentageToDP as hp} from 'react-native-responsive-screen'
 
 const Hint = ({indicio}) => {
     return (
@@ -26,15 +27,14 @@ const styles = StyleSheet.create({
     titleIndicio:{
         fontFamily:FONTS.CIRCULARSTD.MEDIUM,
         color:COLOR.WHITE,
-        fontSize:11,
+        fontSize:FONTS.SIZE.XS,
         letterSpacing:0.3,
         marginBottom:2
     },
     Indicio:{
         color:COLOR.WHITE,
         fontFamily:FONTS.CIRCULARSTD.BOOK,
-        fontSize:12,
-        letterSpacing:0.2,
-        lineHeight:11
+        fontSize:FONTS.SIZE.XS,
+        letterSpacing:0.2
     }
 })

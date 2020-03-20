@@ -4,6 +4,8 @@ import { StyleSheet, Text, View } from 'react-native'
 import COLOR from '../../../config/color'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {formatTime} from '../../../helpers/'
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import FONTS from '../../../config/fonts';
 
 const GameQuizDate = ({date}) => {
     const dateRender = () =>{
@@ -12,7 +14,7 @@ const GameQuizDate = ({date}) => {
     }
     return (
         <View style={styles.container}>
-            <Icon name="timelapse" size={16} color={COLOR.FONTGREY} />
+            <Icon name="timelapse" size={FONTS.SIZE.S} color={COLOR.FONTGREY} />
             <Text style={styles.date}>{dateRender()}</Text>
         </View>
     )
@@ -28,12 +30,12 @@ export default GameQuizDate
 const styles = StyleSheet.create({
     container:{
         flexDirection:'row',
+        marginTop:2,
         justifyContent:'flex-end'
     },
     date:{
         fontFamily:'CircularStd-Book',
-        fontSize:12,
-        marginTop:2,
+        fontSize:FONTS.SIZE.XS,
         marginLeft:7,
         color:COLOR.FONTGREY,
         letterSpacing:0.3

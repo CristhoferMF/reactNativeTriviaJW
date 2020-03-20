@@ -7,6 +7,8 @@ import {Button} from '../../components/'
 import getRealm from '../../schemas/realm'
 import GameQuizScore from './GameQuizContainer/GameQuizScore';
 import * as Animatable from 'react-native-animatable';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import fonts from '../../config/fonts'
 
 class CategoryScreen extends Component {
     constructor(props){
@@ -61,8 +63,8 @@ class CategoryScreen extends Component {
                 style={styles.backgroundImage}>
                 <Text style={styles.categoryTitle}>CATEGORIAS</Text>
                 <Animatable.View animation="pulse" iterationCount="infinite" style={{alignSelf:'center',marginTop:10,elevation:3}}>
-                    <GameQuizScore score={score} iconSize={24} style={{alignSelf:'center'}}
-                        textStyle={{fontSize:20,marginLeft:10}} />
+                    <GameQuizScore score={score} iconSize={fonts.SIZE.XXL} style={{alignSelf:'center'}}
+                        textStyle={{fontSize:fonts.SIZE.XXL,marginLeft:10}} />
                 </Animatable.View>
                 <BtnOrder/>
                 {isEmpty && <GameQuizCup/>}
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
         fontFamily:'FT-ScandinavianTitan-Black',
         color:'white',
-        fontSize:55,
+        fontSize:fonts.SIZE.TITLE[3],
         letterSpacing:3,
         marginTop:40,
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
         textShadowRadius: 10,
     },
     ButtonOnline:{
-        marginVertical:20
+        marginVertical:hp('4%')
     }
 })
 

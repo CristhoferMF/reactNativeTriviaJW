@@ -1,6 +1,7 @@
 import React, { useState, Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import * as Animatable from 'react-native-animatable';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class GameTitle extends Component {
     constructor(props){
@@ -37,8 +38,8 @@ class GameTitle extends Component {
 const styles = StyleSheet.create({
     GameTitle:{
         color:'white',
-        fontSize:90,
-        lineHeight:60,
+        fontSize:hp('15%'),
+        lineHeight:hp('10%'),
         paddingTop:20,
         textAlign:'center',
         fontFamily:'FT-ScandinavianTitan-Black',
