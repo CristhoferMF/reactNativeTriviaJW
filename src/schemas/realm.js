@@ -6,6 +6,6 @@ import AlternativeSchema from './AlternativeSchema';
 export default function getRealm(){
     return Realm.open({
         schema:[CategorySchema,QuizSchema,AlternativeSchema],
-        schemaVersion:6
+        schemaVersion:7
     })
 }

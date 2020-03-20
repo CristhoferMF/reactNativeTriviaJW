@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import FONTS from '../../../../config/fonts'
 import COLOR from '../../../../config/color'
+import * as Animatable from 'react-native-animatable';
 
 export default class QuizAlternative extends Component {
     constructor(props){
@@ -32,11 +33,12 @@ export default class QuizAlternative extends Component {
     alternativeComponent(){
         const {alternativa,isNextQuestion} = this.props
         const { alternativa: texto,resultado} = alternativa
-        
+        const animations = ["bounceInLeft","bounceInRight"];
+        var animation_random = animations[Math.floor(Math.random() * animations.length)]
             if(!isNextQuestion){
-                return (<View style={styles.alternative}>
+                return (<Animatable.View animation={animation_random} style={styles.alternative}>
                             <Text style={styles.alternativeText}>{texto}</Text>
-                        </View>)
+                        </Animatable.View>)
             }
             if(alternativa.isPress){
                 return (

@@ -3,6 +3,7 @@ import {View,ImageBackground, StyleSheet} from 'react-native';
 import BtnPlay from './BtnPlay'
 import BtnHelp from './BtnHelp'
 import GameTitle from './GameTitle'
+import sound from '../../config/sound'
 
 const HomeScreen = ({navigation }) => {
     return (
@@ -12,7 +13,10 @@ const HomeScreen = ({navigation }) => {
             <View style={styles.ViewTop}>
                 <GameTitle/>
             </View>
-            <BtnPlay onPress={()=>{navigation.navigate('Category')}}/>
+            <BtnPlay onPress={()=>{
+                navigation.navigate('Category')
+                sound.startSoundEffect("button_press.mp3",0.7);
+                }}/>
             <BtnHelp/>
         </ImageBackground >
     )

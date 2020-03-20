@@ -7,8 +7,10 @@ import GameQuizDate from './GameQuizDate'
 import GameQuizScore from './GameQuizScore'
 import COLOR from '../../../config/color'
 import getRealm from '../../../schemas/realm'
+import * as Animatable from 'react-native-animatable';
+import sound from '../../../config/sound'
 
-const GameQuizContainer = ({navigationScreenQuiz,category,refreshCategories}) => {
+const GameQuizContainer = ({navigationScreenQuiz,category,refreshCategories,addSCore}) => {
     const count= {
         completed:()=> {
             const {preguntas} = category
@@ -62,19 +64,19 @@ const GameQuizContainer = ({navigationScreenQuiz,category,refreshCategories}) =>
                 text: 'Ok',
                 onPress: () => {
                     deleteCategoryRealm();
-                    console.log('Ok')
+                    sound.startSoundEffect("button_press.mp3",0.7);
                 }
             }])
     }
     return (
         <TouchableOpacity onPress={()=>{navigationScreenQuiz(category.id)}} activeOpacity={0.9} onLongPress={deleteCategory}>
-        <View style={styles.container}>
+        <Animatable.View style={styles.container} animation="bounceInLeft">
             <GameQuizTitle title={category.nombre}/>
             <GameQuizAutor autor={category.autor}/>
             <GameQuizCount nTotal={count.total} nCompleted={count.completed()}/>
             <GameQuizDate date={date}/>
             <GameQuizScore score={score()}/>
-        </View>
+        </Animatable.View>
         </TouchableOpacity>
     )
 }

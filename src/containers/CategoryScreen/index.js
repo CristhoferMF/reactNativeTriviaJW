@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, ImageBackground,FlatList } from 'react-native'
-import { useFocusEffect } from '@react-navigation/native';
+import { StyleSheet, Text,View, ImageBackground,FlatList } from 'react-native'
 import BtnOrder from './BtnOrder'
 import GameQuizContainer from './GameQuizContainer/'
+import GameQuizCup from './GameQuizCup'
 import {Button} from '../../components/'
 import getRealm from '../../schemas/realm'
+import GameQuizScore from './GameQuizContainer/GameQuizScore';
+import * as Animatable from 'react-native-animatable';
 
 class CategoryScreen extends Component {
     constructor(props){
         super(props);
         this.state={
-            categories:[]
+            categories:[],
+            isEmpty:false,
+            score:0
         }
         this.getCategoriesRealm=this.getCategoriesRealm.bind(this)
         this.navigationScreenQuiz=this.navigationScreenQuiz.bind(this)
@@ -18,7 +22,24 @@ class CategoryScreen extends Component {
     async getCategoriesRealm(){
         const realm = await getRealm();
         const categories = realm.objects('Category');
-        this.setState({categories})
+        this.addSCore(categories);
+        this.setState({categories:categories,isEmpty:(categories.length)?false:true})
+    }
+    addSCore(categories){
+        let score = 0
+        const fnscore = (category) => {
+            const {preguntas} = category
+            let score = 0
+            preguntas.forEach(pregunta => {
+                if(pregunta.completed) score+=pregunta.puntuacion;
+            });
+            return score;
+        }
+        categories.map( category => {
+            score = score + fnscore(category)
+        })
+       
+        this.setState({score})
     }
     async componentDidMount(){
         const { navigation } = this.props;
@@ -33,13 +54,18 @@ class CategoryScreen extends Component {
         this.props.navigation.navigate('Quiz',{id:id})
     }
     render(){
-        const {categories}= this.state
+        const {categories,isEmpty,score}= this.state
         return (
             <ImageBackground
                 source={require('../../assets/img/background.jpg')} 
                 style={styles.backgroundImage}>
                 <Text style={styles.categoryTitle}>CATEGORIAS</Text>
+                <Animatable.View animation="pulse" iterationCount="infinite" style={{alignSelf:'center',marginTop:10,elevation:3}}>
+                    <GameQuizScore score={score} iconSize={24} style={{alignSelf:'center'}}
+                        textStyle={{fontSize:20,marginLeft:10}} />
+                </Animatable.View>
                 <BtnOrder/>
+                {isEmpty && <GameQuizCup/>}
                 <FlatList 
                     style={styles.container}
                     data={categories}

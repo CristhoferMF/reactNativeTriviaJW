@@ -92,7 +92,7 @@ class CategoryScreenOnline extends Component {
                       }
                     style={styles.container}
                     data={categories}
-                    renderItem={({item}) => (<GameQuizContainer category={item} setDownloaded={this.setDownloadedCategory} isLoading={this.setLoadingDownloaded}/>)}
+                    renderItem={({item}) => (<GameQuizContainer category={item} setDownloaded={this.setDownloadedCategory} isLoading={this.setLoadingDownloaded} isRefreshing={this.state.isRefreshing}/>)}
                     keyExtractor={category => category.id.toString()}
                     /> 
                 <Button title="REGRESAR" onPress={()=>{this.props.navigation.goBack()}} style={styles.ButtonOnline}/>

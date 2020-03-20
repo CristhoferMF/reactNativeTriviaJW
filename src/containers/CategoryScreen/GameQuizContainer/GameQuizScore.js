@@ -6,37 +6,48 @@ import COLOR from '../../../config/color'
 import LinearGradient from 'react-native-linear-gradient';
 
 
-const GameQuizScore = ({score}) => {
+const GameQuizScore = ({score,style,textStyle,iconSize,isAnimated}) => {
+    
     return (
         <LinearGradient colors={[COLOR.GRADIENTLEFT, COLOR.GRADIENTRIGHT]} 
         start={{x: 0, y: 0}} end={{x: 1, y: 0}}
-        style={styles.ScoreContainer}>
-            <Icon name="redeem" color={COLOR.WHITE} size={15}/>
-        <Text style={styles.ScoreText}>{score}</Text>
+        style={[styles.ScoreContainer,style]}>
+            <Icon name="redeem" color={COLOR.WHITE} size={iconSize}/>
+            <Text style={[styles.ScoreText,textStyle]}>{score}</Text>
         </LinearGradient>
     )
 }
 
 GameQuizScore.propTypes = {
-    score:PropTypes.number.isRequired
+    score:PropTypes.number.isRequired,
+    textStyle:PropTypes.object,
+    style:PropTypes.object,
+    iconSize:PropTypes.number
 }
+GameQuizScore.defaultProps = {
+    textStyle:{
+        fontSize:12,
+        marginLeft:7
+    },
+    style:{
+        position:'absolute',
+        right:15,
+        top:15,
+    },
+    iconSize:15
+}
+
 export default GameQuizScore
 
 const styles = StyleSheet.create({
     ScoreContainer:{
         flexDirection:'row',
-        position:'absolute',
-        right:15,
-        top:15,
         paddingHorizontal:15,
         borderRadius:10,
         paddingVertical:4,
-        backgroundColor:'green',
     },
     ScoreText:{
         fontFamily:'CircularStd-Bold',
-        fontSize:12,
-        marginLeft:7,
         color:COLOR.WHITE
     }
 })

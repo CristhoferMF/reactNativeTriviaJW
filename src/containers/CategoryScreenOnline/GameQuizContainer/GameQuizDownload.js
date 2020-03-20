@@ -5,12 +5,12 @@ import COLOR from '../../../config/color'
 import LinearGradient from 'react-native-linear-gradient';
 
 
-const GameQuizDownload = ({downloaded}) => {
+const GameQuizDownload = ({downloaded,toUpdated}) => {
     return (
         <LinearGradient colors={(downloaded) ? ['#08AC14','#08AC14'] : ['red', 'purple'] } 
         start={{x: 0, y: 0}} end={{x: 1, y: 0}}
         style={styles.ScoreContainer}>
-            <Icon name={(downloaded) ? "md-checkmark" : "md-cloud-download"} color={COLOR.WHITE} size={15}/> 
+            <Icon name={(downloaded && !toUpdated) ? "md-checkmark" : "md-cloud-download"} color={COLOR.WHITE} size={15}/> 
         </LinearGradient>
     )
 }

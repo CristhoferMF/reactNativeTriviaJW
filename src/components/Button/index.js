@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import {Text,View,TouchableOpacity ,StyleSheet} from 'react-native';
+import sound from '../../config/sound'
 
-const Button = ({title,onPress,style,fontSize}) => {
+const Button = ({title,onPress,style,fontSize,isSound}) => {
     return (
             <TouchableOpacity 
-            onPress={onPress} 
+            onPress={()=> {
+                isSound && sound.startSoundEffect("button_press.mp3",0.7);
+                onPress()
+            }} 
             activeOpacity={0.9}>
                 <View style={[styles.Btn,style]}>
                     <Text letterSpacing={2} style={[styles.BtnText,{fontSize}]}>{title}</Text>
@@ -18,11 +22,13 @@ Button.propTypes = {
     title:PropTypes.string.isRequired,
     onPress:PropTypes.func.isRequired,
     style:PropTypes.object,
-    fontSize:PropTypes.number
+    fontSize:PropTypes.number,
+    isSound:PropTypes.bool
 }
 Button.defaultProps = {
     style:{},
-    fontSize:15
+    fontSize:15,
+    isSound:true
 }
 const styles = StyleSheet.create({
     Btn:{

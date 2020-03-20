@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View,ImageBackground, Alert } from 'react-native'
 import QuizContainer from './QuizContainer'
 import HintContainer from './HintContainer'
-import { Player } from '@react-native-community/audio-toolkit';
 import getRealm from '../../schemas/realm'
 import {shuffle} from '../../helpers'
 import {Button} from '../../components/'
+import Sound from 'react-native-sound';
 
 class QuizScreen extends Component{
 
@@ -27,7 +27,7 @@ class QuizScreen extends Component{
     }
 
     componentDidMount(){
-        this.startSoundEffect('next_question.mp3')
+        this._startSoundEffect('next_question.mp3')
         this.getQuizzesRealm()
     }
     async getQuizzesRealm(){
@@ -45,23 +45,21 @@ class QuizScreen extends Component{
         }
         shuffle(quizzes)
         quizzes.sort(function(x, y) {
-            //return (x.completed === y.completed)? 0 : x.completed? -1 : 1;
-            /* false first */ return (x.completed === y.completed)? 0 : x.completed? 1 : -1;
+            return (x.completed === y.completed)? 0 : x.completed? 1 : -1;
         })
         this.setState({category,quizzes,score})
     }
-    async startSoundEffect(source,volume=1){
-        var p = new Player(source);
-            p.looping=false
-            p.volume=volume;
-        await p.prepare((err)=>{
-            if(err) console.log("START_SOUND_EFFECT_ERROR",err);
+    _startSoundEffect(source,volume=1){
+        const sound = new Sound(source,Sound.MAIN_BUNDLE,(error) => {
+            if(error) throw new Error(error);
+            sound.setVolume(volume);
+            sound.setNumberOfLoops(0);
+            sound.play();
         })
-        p.play()
     }
     /* Cuando presionamos el boton siguiente */
     onPressNextQuestion(){
-        this.startSoundEffect('next_question.mp3')
+        this._startSoundEffect('next_question.mp3')
 
         const {nQuiz,quizzes} = this.state
         let _nQuiz = nQuiz;
@@ -74,7 +72,7 @@ class QuizScreen extends Component{
 
     /* Cuando el tiempo se acaba */
     OnTimeOut(){
-        this.startSoundEffect('timer_end_sound.mp3')
+        this._startSoundEffect('timer_end_sound.mp3')
         this.setState({isTimeout:true,isNextQuestion:true})
     }
     /* Acabo las preguntas */
@@ -85,7 +83,7 @@ class QuizScreen extends Component{
         const nextQuiz = quizzes[nQuiz+1];
       
         if(isSuccess){
-            this.startSoundEffect('success_alternative.mp3')
+            this._startSoundEffect('success_alternative.mp3')
             if(!quiz.completed){
                 try {
                     const realm = await getRealm();
@@ -100,7 +98,7 @@ class QuizScreen extends Component{
                 score = score + quiz.puntuacion
             }
         }else{
-            this.startSoundEffect('error_alternative.mp3')
+            this._startSoundEffect('error_alternative.mp3')
         }
         this.setState({isNextQuestion:true,isSuccess,score})
 
@@ -151,7 +149,7 @@ class QuizScreen extends Component{
                         isTimeout={isTimeout}
                         isSuccess={isSuccess}
                         setNextQuestion={this.setNextQuestion} />
-                    {!completed && isNextQuestion && <Button title="SIGUIENTE" style={{marginTop:20}} fontSize={14} onPress={this.onPressNextQuestion}/> }
+                    {!completed && isNextQuestion && <Button title="SIGUIENTE" style={{marginTop:20}} fontSize={14} isSound={false} onPress={this.onPressNextQuestion}/> }
                     </View>
                     <HintContainer indicio={quiz.indicio}/>
                 </View> :

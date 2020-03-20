@@ -36,7 +36,8 @@ target 'reactNativeQuizJW' do
 
 
 
-  pod 'ReactNativeAudioToolkit', :path => '../node_modules/@react-native-community/audio-toolkit'
+
+  pod 'RNSound', :path => '../node_modules/react-native-sound'
 
   target 'reactNativeQuizJWTests' do
     inherit! :search_paths
