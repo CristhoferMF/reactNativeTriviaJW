@@ -1,5 +1,7 @@
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
+const fontSmall = 3.5;
+const iter = 0.4;
 export default FONTS = {
     CIRCULARSTD:{
         BLACK:"CircularStd-Black",
@@ -13,12 +15,12 @@ export default FONTS = {
     },
     SCANDINAVIAN:"FT-ScandinavianTitan-Black",
     SIZE:{
-        XS:hp('2.0%'),
-        S:hp('2.3%'),
-        M:hp('2.5%'),
-        L:hp('2.7%'),
-        XL:hp('2.9%'),
-        XXL:hp('3.1%'),
-        TITLE:[hp('4%'),hp('6%'),hp('8%'),hp('10%')]
+        XS:wp(fontSmall+'%'),
+        S:wp((fontSmall+iter)+'%'),
+        M:wp((fontSmall+(iter*2))+'%'),
+        L:wp((fontSmall+(iter*3))+'%'),
+        XL:wp((fontSmall+(iter*4))+'%'),
+        XXL:wp((fontSmall+(iter*5))+'%'),
+        TITLE:[wp('7%'),wp('10%'),wp('13%'),wp('16%')]
     }
 }

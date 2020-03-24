@@ -34,7 +34,6 @@ export default HintContainer
 const styles = StyleSheet.create({
     HintContainer:{
         flexDirection:'row',
-        marginHorizontal:15,
         backgroundColor:color.PRIMARYTRANSPARENCY(0.9),
         paddingHorizontal:10,
         borderRadius:20,

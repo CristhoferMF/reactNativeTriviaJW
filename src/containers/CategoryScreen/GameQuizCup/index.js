@@ -30,12 +30,13 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
         textShadowOffset: {width: 2, height: 1},
         textShadowRadius: 10,
-        fontSize:FONTS.SIZE.L
+        fontSize:FONTS.SIZE.M
     },
     image:{
-        marginBottom:'3%',
+        marginBottom:10,
         height:'70%',
-        width:wp('100%'),
+        maxHeight:230,
+        alignSelf:'center',
     },
     viewText:{
         paddingTop:'0.5%',

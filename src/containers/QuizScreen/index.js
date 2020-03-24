@@ -7,6 +7,7 @@ import {shuffle} from '../../helpers'
 import {Button} from '../../components/'
 import Sound from 'react-native-sound';
 import { ScrollView } from 'react-native-gesture-handler'
+import { widthPercentageToDP } from 'react-native-responsive-screen'
 
 class QuizScreen extends Component{
 
@@ -138,8 +139,7 @@ class QuizScreen extends Component{
                 source={require('../../assets/img/background.jpg')} 
                 style={styles.backgroundImage}>
                 { quiz ?
-                <View style={{flex:1}}>
-                    <ScrollView style={styles.container}>
+                <ScrollView style={styles.container} contentContainerStyle={{justifyContent:'center',flexGrow:1}} >
                     <QuizContainer 
                         category={category}
                         score={score}
@@ -151,9 +151,8 @@ class QuizScreen extends Component{
                         isSuccess={isSuccess}
                         setNextQuestion={this.setNextQuestion} />
                     {!completed && isNextQuestion && <Button title="SIGUIENTE" style={{marginTop:20}}  isSound={false} onPress={this.onPressNextQuestion}/> }
-                    </ScrollView>
-                    <ScrollView contentContainerStyle={{flex:1,justifyContent:'flex-end'}}><HintContainer indicio={quiz.indicio}/></ScrollView>
-                </View> :
+                    <HintContainer indicio={quiz.indicio}/>
+                </ScrollView> :
                 <View style={styles.container}>
                     <Text>Se acaba</Text>    
                 </View>}
@@ -172,7 +171,7 @@ const styles = StyleSheet.create({
         height:'100%'
     },
     container:{
-        paddingHorizontal:15,
-        maxHeight:'80%',
+        paddingHorizontal:widthPercentageToDP('5.5%'),
+        flex:1
     },
 })

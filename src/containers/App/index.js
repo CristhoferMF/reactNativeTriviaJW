@@ -27,7 +27,7 @@ class App extends Component {
 
       soundBack.setVolume(0.7)
       soundBack.setNumberOfLoops(-1)
-      //soundBack.play();
+      soundBack.play();
     })
     return soundBack
   }

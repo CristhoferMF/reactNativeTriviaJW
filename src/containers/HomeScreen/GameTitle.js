@@ -38,8 +38,8 @@ class GameTitle extends Component {
 const styles = StyleSheet.create({
     GameTitle:{
         color:'white',
-        fontSize:hp('15%'),
-        lineHeight:hp('10%'),
+        fontSize:wp('25%'),
+        lineHeight:wp('18%'),
         paddingTop:20,
         textAlign:'center',
         fontFamily:'FT-ScandinavianTitan-Black',

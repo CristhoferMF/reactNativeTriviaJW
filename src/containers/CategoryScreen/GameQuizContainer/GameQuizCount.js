@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     },
     count:{
         fontFamily:'CircularStd-Book',
-        fontSize:FONTS.SIZE.xs,
+        fontSize:FONTS.SIZE.XS,
         marginLeft:7,
         letterSpacing:0.2
     }
